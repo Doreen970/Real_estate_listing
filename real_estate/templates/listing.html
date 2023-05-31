@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="px-3 py-2 bg-gray-100 rounded-sm">
+    <h1 class="text-3xl text-gray-900">{{ listing.title }}</h1>
+     <p class="text-gray-600 text-sm">Location: {{ listing.address }}</p>
+     <p class="text-gray-600 text-sm">Bedrooms: {{ listing.num_bedrooms }}</p>
+     <p class="text-gray-600 text-sm">Bathrooms: {{ listing.num_bathrooms }}</p>
+     <p class="text-gray-600 text-sm">Size(squareft): {{ listing.square_footage }}</p>
+     <p class="text-gray-900">Price in dollars: ${{ listing.price }}</p>
+     {% if request.user.is_staff %}
+     <div class="mt-5 py-5 border-t border-gray-200">
+        <a href="/listings/{{ listing.id }}/edit/" class="text-blue-500">Edit</a>
+        <a href="/listings/{{ listing.id }}/delete/" class="ml-6 text-blue-500">Delete
+        </a> 
+     </div>
+     {% endif %}
+    </div>
+    {% endblock content %}
